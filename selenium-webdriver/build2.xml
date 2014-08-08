@@ -1,0 +1,42 @@
+<project name="selenium-webdriver" default="runtests" basedir=".">
+    <property name="build.class" value="build/class"/>
+ 
+    <target name="compiletests">
+        <mkdir dir="build/class"/>
+        <javac srcdir="src" destdir="${build.class}">
+            <classpath>
+                <fileset dir="lib">
+      <include name="**/*.jar" />
+                </fileset>
+            </classpath>
+        </javac>
+ <copy todir="${build.class}">
+     <fileset dir="resource">
+                <include name="*.properties"/>
+            </fileset>
+ </copy>
+    </target>
+
+    <target name="runtests" depends="compiletests">
+
+        <junit fork="yes" printSummary="yes">
+            <classpath>
+                <pathelement location="build/lib/selenium-java-client-driver.jar" />
+                <pathelement location="build/lib/junit-4.0.jar" />
+                <pathelement location="${build.class}" />
+            </classpath>
+            <formatter type="xml" />
+     <batchtest todir="report">
+  <fileset dir="src">
+   <include name="**/*.java"/>
+  </fileset>
+     </batchtest>
+        </junit>
+   <junitreport todir="report">
+   <fileset dir="report">
+     <include name="TEST-*.xml" />
+    </fileset>
+    <report format="frames" todir="report" />
+   </junitreport>
+    </target>
+</project>
