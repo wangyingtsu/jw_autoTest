@@ -59,9 +59,9 @@ public class Base {
 		// login
 		driver.get(baseUrl + "/");
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys("wangying002");
+		driver.findElement(By.name("username")).sendKeys("auto_test");
 		driver.findElement(By.name("password")).clear();
-		driver.findElement(By.name("password")).sendKeys("wangying123");
+		driver.findElement(By.name("password")).sendKeys("auto_test");
 		WebElement element =driver.findElement(By.cssSelector("span.bluebtn35_text"));
 		element.click();
 	}
