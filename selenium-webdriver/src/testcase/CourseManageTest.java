@@ -15,10 +15,10 @@ public class CourseManageTest extends Base {
 	 * 1.正常添加课程 
 	 * 2.正常 删除课程
 	 */
-	// @Test
+	@Test
 	public void createCouse() throws Exception {
 
-		String expectedCurrenturl = "http://jw.ablesky.com/courseRedirect.do?action=toCourseList";
+		String expectedCurrenturl = "http://jw."+env+"ablesky.com/courseRedirect.do?action=toCourseList";
 		String coursename = "测试课程-语文";
 
 		driver.findElement(By.linkText("课程管理")).click();
@@ -44,7 +44,7 @@ public class CourseManageTest extends Base {
 		File screenShotFile = ((TakesScreenshot) driver)
 				.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/createCourse/createCourse.png"));
+				"D:/auto_test/CourseManage/createCourse.png"));
 		String realCourse = driver.findElement(By.id("courseName"))
 				.getAttribute("value");
 		sleep();
@@ -63,7 +63,7 @@ public class CourseManageTest extends Base {
 	 * 课程标题输入超过100字，提示信息：“最多100位字符”
 	 * 
 	 */
-	//@Test
+	@Test
 	public void createCourseForTitletoolong() throws IOException {
 		String errorCourseName = "噶尽快发货卡机啥的和反馈阿道夫凯撒的恢复快接电话发快件萨丹哈反馈电话费会计师的恢复会计"
 				+ "师电话费课件是电话费可接受的回复空间萨丹哈反馈奥斯卡回复会计啥的和反馈盛大和罚款坚实的发货快的看法和卡仕达福克斯的恢复快的生活费";
@@ -80,7 +80,7 @@ public class CourseManageTest extends Base {
 		File screenShotFile = ((TakesScreenshot) driver)
 				.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/createCourse/createCourseForTitletoolong.png"));
+				"D:/auto_test/CourseManage/createCourseForTitletoolong.png"));
 		String errorMessage = driver
 				.findElement(
 						By.xpath(".//*[@id='#J_createCourse']/tbody/tr[1]/td[2]/div/label[2]"))
@@ -104,7 +104,7 @@ public class CourseManageTest extends Base {
 	 * 课程简介输入超过500字时提示：“课程简介超过500字”
 	 * 
 	 */
-	//@Test
+	@Test
 	public void createcourseFordescriptionOvertoolong() throws IOException {
 		String courseName="英语课——测试";
 		String coursePrice="100";
@@ -128,7 +128,7 @@ public class CourseManageTest extends Base {
 		File screenShotFile = ((TakesScreenshot) driver)
 				.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/createCourse/createcourseFordescriptionOvertoolong.png"));
+				"D:/auto_test/CourseManage/createcourseFordescriptionOvertoolong.png"));
 		String actulerrorMessage = driver
 				.findElement(
 						By.xpath(".//*[@id='#J_createCourse']/tbody/tr[3]/td[2]/label"))
@@ -151,7 +151,7 @@ public class CourseManageTest extends Base {
 	/**
 	 * 课程价格不能超过1000000元
 	 */
-	//@Test
+	@Test
 	public void createcourseForPricetoohigh() throws IOException {
 		String courseName="英语课——测试";
 		String formalcoursePrice="100";
@@ -172,7 +172,7 @@ public class CourseManageTest extends Base {
 		File screenShotFile = ((TakesScreenshot) driver)
 				.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/createCourse/createcourseForPricetoohigh.png"));
+				"D:/auto_test/CourseManage/createcourseForPricetoohigh.png"));
 		String actulerrorMessage = driver
 				.findElement(
 						By.xpath("html/body/div[4]/div[2]/section/div/div"))

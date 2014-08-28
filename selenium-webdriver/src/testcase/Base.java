@@ -21,6 +21,10 @@ public class Base {
 	public String baseUrl;
 	public boolean acceptNextAlert = true;
 	public StringBuffer verificationErrors = new StringBuffer();
+	public String env="";
+	//public String env="beta";
+	public String username="auto_test";
+	public String password="auto_test";
 
 	@Before
 	public void setUp() throws Exception {
@@ -59,9 +63,9 @@ public class Base {
 		// login
 		driver.get(baseUrl + "/");
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys("auto_test");
+		driver.findElement(By.name("username")).sendKeys(username);
 		driver.findElement(By.name("password")).clear();
-		driver.findElement(By.name("password")).sendKeys("auto_test");
+		driver.findElement(By.name("password")).sendKeys(password);
 		WebElement element =driver.findElement(By.cssSelector("span.bluebtn35_text"));
 		element.click();
 	}
@@ -69,7 +73,7 @@ public class Base {
 	@After
 	public void tearDown() throws Exception {
 		// logout
-		driver.findElement(By.linkText("课程管理")).click();
+		//driver.findElement(By.linkText("课程管理")).click();
 		driver.findElement(By.linkText("[退出]")).click();
 		// stop driver
 		System.out.println("browser will be closed");

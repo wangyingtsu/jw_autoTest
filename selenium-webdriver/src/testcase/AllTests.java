@@ -7,8 +7,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
 	CourseManageTest.class,
-	TeacherManage.class
-	
+	//TeacherManage.class
+	ClassroomManage.class
 	
 	
 

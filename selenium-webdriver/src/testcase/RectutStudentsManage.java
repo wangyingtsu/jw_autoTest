@@ -1,5 +1,5 @@
 package testcase;
 
-public class RectutStudentsManage {
+public class RectutStudentsManage extends Base{
 
 }
