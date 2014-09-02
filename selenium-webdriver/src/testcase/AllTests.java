@@ -8,7 +8,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	CourseManageTest.class,
 	//TeacherManage.class
-	ClassroomManage.class
+	ClassroomManageTest.class
 	
 	
 
