@@ -19,10 +19,11 @@ import org.openqa.selenium.support.ui.Select;
 public class StudentManageTest extends Base {
 	
    /**添加学员 */
-	  //@Test
+	  @Test
 	  public void createStudent() {
 	    
-		String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";
+		String expectedCurrenturl = "http://jw."+ env
+				+" .ablesky.com/studentRedirect.do?action=toManageStudent";
 					
 		driver.findElement(By.linkText("学员管理")).click();
 		String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
@@ -51,9 +52,10 @@ public class StudentManageTest extends Base {
 	  }
 	  
 	  /**不能创建同名学员 */
-		//@Test
+		@Test
 		public void Cannotcreatethesamestudents(){
-			String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";
+			String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";
 			String expectederrorMess ="姓名已存在，不能创建同名学员";//定义一个字符串的内容
 			driver.findElement(By.linkText("学员管理")).click();
 			String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
@@ -81,9 +83,10 @@ public class StudentManageTest extends Base {
 		}
 		
 		/**姓名不能超过20个字符 */
-		//@Test
+		@Test
 		public void nameover20(){
-			String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";
+			String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";
 			String errorname="ymymymymymymymymymymymymymymyjm121221";//错误姓名
 			String rightname="ym12";//正确姓名
 			driver.findElement(By.linkText("学员管理")).click();
@@ -114,9 +117,10 @@ public class StudentManageTest extends Base {
 		}
 		
 		/**性别选择女*/
-		//@Test
+		@Test
 		public void gentelIsfemal(){
-			String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";
+			String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";
 			driver.findElement(By.linkText("学员管理")).click();
 			String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
 			String title = driver.getTitle() + "学员管理";//定义一个标题
@@ -133,9 +137,10 @@ public class StudentManageTest extends Base {
 		}	
 			
 		/**手机号输入规则验证*/
-		//@Test
+		@Test
 		public void mobileNumber(){
-			String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";
+			String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";
 			driver.findElement(By.linkText("学员管理")).click();
 			String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
 			String title = driver.getTitle() + "学员管理";//定义一个标题
@@ -178,10 +183,11 @@ public class StudentManageTest extends Base {
 	    }
 	  
 	/**查询学员*/  
-	// @Test
+	@Test
 	  public void queryStudent() {
 		  
-	    String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";
+	    String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";
 					
 	    driver.findElement(By.linkText("学员管理")).click();
 		String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
@@ -208,9 +214,10 @@ public class StudentManageTest extends Base {
 	  }
 	  
 	/**修改学员*/ 
-	  //@Test
+	  @Test
 	  public void modifyStudent() {
-		String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";
+		String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";
 	    				
 		driver.findElement(By.linkText("学员管理")).click();
 		String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
@@ -229,9 +236,10 @@ public class StudentManageTest extends Base {
 	  } 
 	  
 	/**添加备注*/
-	  //@Test
+	  @Test
 	  public void Message() {
-		String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";
+		String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";
 	    				
 		driver.findElement(By.linkText("学员管理")).click();
 		String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
@@ -254,9 +262,10 @@ public class StudentManageTest extends Base {
 	  }
 	  
 	/**发送短信*/
-	 //@Test
+	 @Test
 	  public void SmsComposeTask() {
-		String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";
+		String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";
 	    				
 		driver.findElement(By.linkText("学员管理")).click();
 		String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
@@ -277,9 +286,10 @@ public class StudentManageTest extends Base {
 	  }
 	 
 	/**选择短信模板*/
-	 //@Test
+	 @Test
 	  public void SMSTemplate() {
-		String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";		    				
+		String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";		    				
 		driver.findElement(By.linkText("学员管理")).click();
 		String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
 		String title = driver.getTitle() + "学员管理";//定义一个标题
@@ -301,9 +311,10 @@ public class StudentManageTest extends Base {
       }
 	  
 	  /**标记重要程度*/
-		 //@Test
+		 @Test
 		  public void Tagtodegree() {
-			String expectedCurrenturl = "http://jw.beta.ablesky.com/studentRedirect.do?action=toManageStudent";			    				
+			String expectedCurrenturl = "http://jw."+ env
+				+".ablesky.com/studentRedirect.do?action=toManageStudent";			    				
 			driver.findElement(By.linkText("学员管理")).click();
 			String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
 			String title = driver.getTitle() + "学员管理";//定义一个标题
