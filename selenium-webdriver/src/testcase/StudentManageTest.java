@@ -1,29 +1,23 @@
 package testcase;
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 //import org.openqa.selenium.os.*;
 
 public class StudentManageTest extends Base {
 	
    /**添加学员 */
-	  @Test
+	  //@Test
 	  public void createStudent() {
 	    
 		String expectedCurrenturl = "http://jw."+ env
-				+" .ablesky.com/studentRedirect.do?action=toManageStudent";
+				+"ablesky.com/studentRedirect.do?action=toManageStudent";
 					
 		driver.findElement(By.linkText("学员管理")).click();
 		String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
@@ -35,7 +29,7 @@ public class StudentManageTest extends Base {
 	    driver.findElement(By.cssSelector("span.greenbtn25_text")).click();
 	    driver.findElement(By.id("name")).click();
 	    driver.findElement(By.id("name")).clear();
-	    driver.findElement(By.id("name")).sendKeys("ymgg");
+	    driver.findElement(By.id("name")).sendKeys("ymgg11");
 	    driver.findElement(By.xpath("(//input[@name='gender'])[2]")).click();
 	    driver.findElement(By.name("mobile")).clear();
 	    driver.findElement(By.name("mobile")).sendKeys("13522224444");
@@ -52,22 +46,17 @@ public class StudentManageTest extends Base {
 	  }
 	  
 	  /**不能创建同名学员 */
-		@Test
+		//@Test
 		public void Cannotcreatethesamestudents(){
-			String expectedCurrenturl = "http://jw."+ env
-				+".ablesky.com/studentRedirect.do?action=toManageStudent";
+			String name="ymgg11";
+			this.createStucom();
 			String expectederrorMess ="姓名已存在，不能创建同名学员";//定义一个字符串的内容
-			driver.findElement(By.linkText("学员管理")).click();
-			String actualCurrentur1 = driver.getCurrentUrl();//应该是取驱动当前的地址给actualCurrentur1
-			String title = driver.getTitle() + "学员管理";//定义一个标题
-			System.out.println(title + "\n" + actualCurrentur1);//控制台打印,程序员调程序用的(可有可无)                                                                                                                                                                                                                                                                                            
-			assertEquals(expectedCurrenturl,actualCurrentur1);//比较两个值是否相等
 		    sleep();
 		    driver.findElement(By.linkText("学员管理")).click();
 		    driver.findElement(By.cssSelector("span.greenbtn25_text")).click();
 		    driver.findElement(By.id("name")).click();
 		    driver.findElement(By.id("name")).clear();
-		    driver.findElement(By.id("name")).sendKeys("ymgg");
+		    driver.findElement(By.id("name")).sendKeys(name);
 		    driver.findElement(By.name("mobile")).clear();
 		    driver.findElement(By.name("mobile")).sendKeys("13222224444");
 		    driver.findElement(By.name("recommenderIdbefore")).click();
@@ -77,13 +66,15 @@ public class StudentManageTest extends Base {
 		    sleep();
 		    String actualerrorMess = driver.findElement(By.id("name_tip")).getText();//获取的name_tip字符串的值传给actualerrorMess对像
 		    Assert.assertEquals(expectederrorMess, actualerrorMess);//expected是期望值，通常都是用户指定的内容，actual是被测试的代码返回的实际值（比较两个值是否相等）
-		    
-		    driver.findElement(By.cssSelector("span.graybtn30_text")).click();		    
+		    sleep(); sleep();
+		    driver.findElement(By.cssSelector("span.graybtn30_text")).click();		
+		    sleep(); sleep();
+		    this.deleteStucom();
 					
 		}
 		
 		/**姓名不能超过20个字符 */
-		@Test
+		//@Test
 		public void nameover20(){
 			String expectedCurrenturl = "http://jw."+ env
 				+".ablesky.com/studentRedirect.do?action=toManageStudent";
@@ -117,7 +108,7 @@ public class StudentManageTest extends Base {
 		}
 		
 		/**性别选择女*/
-		@Test
+		//@Test
 		public void gentelIsfemal(){
 			String expectedCurrenturl = "http://jw."+ env
 				+".ablesky.com/studentRedirect.do?action=toManageStudent";
@@ -137,7 +128,7 @@ public class StudentManageTest extends Base {
 		}	
 			
 		/**手机号输入规则验证*/
-		@Test
+		//@Test
 		public void mobileNumber(){
 			String expectedCurrenturl = "http://jw."+ env
 				+".ablesky.com/studentRedirect.do?action=toManageStudent";
@@ -183,7 +174,7 @@ public class StudentManageTest extends Base {
 	    }
 	  
 	/**查询学员*/  
-	@Test
+	//@Test
 	  public void queryStudent() {
 		  
 	    String expectedCurrenturl = "http://jw."+ env
@@ -214,7 +205,7 @@ public class StudentManageTest extends Base {
 	  }
 	  
 	/**修改学员*/ 
-	  @Test
+	 // @Test
 	  public void modifyStudent() {
 		String expectedCurrenturl = "http://jw."+ env
 				+".ablesky.com/studentRedirect.do?action=toManageStudent";
@@ -236,7 +227,7 @@ public class StudentManageTest extends Base {
 	  } 
 	  
 	/**添加备注*/
-	  @Test
+	  //@Test
 	  public void Message() {
 		String expectedCurrenturl = "http://jw."+ env
 				+".ablesky.com/studentRedirect.do?action=toManageStudent";
@@ -262,7 +253,7 @@ public class StudentManageTest extends Base {
 	  }
 	  
 	/**发送短信*/
-	 @Test
+	// @Test
 	  public void SmsComposeTask() {
 		String expectedCurrenturl = "http://jw."+ env
 				+".ablesky.com/studentRedirect.do?action=toManageStudent";
@@ -286,7 +277,7 @@ public class StudentManageTest extends Base {
 	  }
 	 
 	/**选择短信模板*/
-	 @Test
+	// @Test
 	  public void SMSTemplate() {
 		String expectedCurrenturl = "http://jw."+ env
 				+".ablesky.com/studentRedirect.do?action=toManageStudent";		    				
@@ -311,7 +302,7 @@ public class StudentManageTest extends Base {
       }
 	  
 	  /**标记重要程度*/
-		 @Test
+		// @Test
 		  public void Tagtodegree() {
 			String expectedCurrenturl = "http://jw."+ env
 				+".ablesky.com/studentRedirect.do?action=toManageStudent";			    				
@@ -330,7 +321,7 @@ public class StudentManageTest extends Base {
 		    driver.findElement(By.id("6515")).click();//需手工改动数字进行删除，数字要跟删除按钮的id一致
 	  }
 		//检查导出excel按钮
-		@Test
+	//	@Test
 		public void exportbutton(){
 			driver.findElement(By.linkText("学员管理")).click();
 			String exportButtonname="导出Excel文件";

@@ -9,10 +9,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
 public class RectutStudentsManageTest extends Base {
+	
 	/**
 	 * 创建推荐人
 	 */
-	// @Test@Test
+	// @Test
 	public void creatReferrer() {
 		String expectedCurrenturl = "http://jw." + env
 				+ "ablesky.com/recommenderRedirect.do?action=toManage";
@@ -32,14 +33,7 @@ public class RectutStudentsManageTest extends Base {
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
 		driver.findElement(By.linkText("招生管理")).click();
 		sleep();
-		sleep();
-		sleep();
-		driver.findElement(By.linkText("删除")).click();
-		driver.findElement(
-				By.xpath("html/body/div[9]/table/tbody/tr[2]/td[2]/div[3]/button[1]"))
-				.click();
-		sleep();
-		sleep();
+		this.deleteRefcom();
 		driver.findElement(By.linkText("招生管理")).click();
 
 	}
@@ -84,12 +78,7 @@ public class RectutStudentsManageTest extends Base {
 		driver.findElement(By.linkText("招生管理")).click();
 		// 删除
 		sleep();
-		sleep();
-		driver.findElement(By.linkText("删除")).click();
-		driver.findElement(
-				By.xpath("html/body/div[9]/table/tbody/tr[2]/td[2]/div[3]/button[1]"))
-				.click();
-		sleep();
+        this.deleteRefcom();
 		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 
@@ -131,14 +120,7 @@ public class RectutStudentsManageTest extends Base {
 
 		driver.findElement(By.linkText("招生管理")).click();
 		sleep();
-		sleep();
-		sleep();
-		driver.findElement(By.linkText("删除")).click();
-		driver.findElement(
-				By.xpath("html/body/div[9]/table/tbody/tr[2]/td[2]/div[3]/button[1]"))
-				.click();
-		sleep();
-		sleep();
+		this.deleteRefcom();
 		driver.findElement(By.linkText("招生管理")).click();
 
 	}
@@ -169,13 +151,7 @@ public class RectutStudentsManageTest extends Base {
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
 		driver.findElement(By.linkText("招生管理")).click();
 		sleep();
-		sleep();
-		sleep();
-		driver.findElement(By.linkText("删除")).click();
-		driver.findElement(
-				By.xpath("html/body/div[9]/table/tbody/tr[2]/td[2]/div[3]/button[1]"))
-				.click();
-		sleep();
+		this.deleteRefcom();
 		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 
@@ -298,11 +274,7 @@ public class RectutStudentsManageTest extends Base {
 		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 
-		driver.findElement(By.linkText("删除")).click();
-		driver.findElement(
-				By.xpath("html/body/div[9]/table/tbody/tr[2]/td[2]/div[3]/button[1]"))
-				.click();
-		sleep();
+		this.deleteRefcom();
 		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 	}
@@ -361,12 +333,7 @@ public class RectutStudentsManageTest extends Base {
 		String expectNum = "1";
 		String actualNum = driver.findElement(By.id("J_totalCount")).getText();
 		Assert.assertEquals(expectNum, actualNum);
-
-		driver.findElement(By.linkText("删除")).click();
-		driver.findElement(
-				By.xpath("html/body/div[9]/table/tbody/tr[2]/td[2]/div[3]/button[1]"))
-				.click();
-		sleep();
+        this.deleteRefcom();
 		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 
@@ -414,12 +381,7 @@ public class RectutStudentsManageTest extends Base {
 		String actualNum = driver.findElement(By.id("J_totalCount")).getText();
 		Assert.assertEquals(expectNum, actualNum);
 		sleep();
-		sleep();
-		driver.findElement(By.linkText("删除")).click();
-		driver.findElement(
-				By.xpath("html/body/div[9]/table/tbody/tr[2]/td[2]/div[3]/button[1]"))
-				.click();
-		sleep();
+		this.deleteRefcom();
 		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 		sleep();

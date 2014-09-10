@@ -85,6 +85,96 @@ public class Base {
 		}
 	}
 	
+	//创建学员公共方法
+		public void createStucom(){
+			String name="ymgg11";//在学员管理中用到此数据，不能更改此变量
+			sleep();sleep();
+			driver.findElement(By.linkText("学员管理")).click();
+			driver.findElement(By.cssSelector("span.greenbtn25_text")).click();
+			driver.findElement(By.id("name")).click();
+			driver.findElement(By.id("name")).clear();
+			driver.findElement(By.id("name")).sendKeys(name);
+			driver.findElement(By.xpath("(//input[@name='gender'])[2]")).click();
+			driver.findElement(By.name("mobile")).clear();
+			driver.findElement(By.name("mobile")).sendKeys("13522224444");
+			driver.findElement(By.name("recommenderIdbefore")).click();
+			driver.findElement(By.id("ymgg")).click();
+			driver.findElement(By.cssSelector("button[type=\"button\"]")).click();
+			driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+			
+		}
+		//删除学员公共方法
+		public void deleteStucom(){
+			sleep();
+			driver.findElement(By.linkText("学员管理")).click();
+			sleep();
+			driver.findElement(By.linkText("删除")).click();		
+			//driver.findElement(By.xpath("(//a[contains(text(),'删除')])[1]")).click();//删除学员（数字显示第几个，列表中就删除第几个学员）
+		    driver.findElement(By.cssSelector("button[type=\"button\"]")).click();	    
+		    sleep();
+			
+		}
+	
+	//创建老师
+	
+	//创建班级
+	
+	//创建班级类目
+	
+	//创建课程公共方法
+		public void createCoursecom(){
+			String coursename = "测试课程-绿萝";
+			driver.findElement(By.linkText("课程管理")).click();
+			driver.findElement(By.cssSelector("span.greenbtn25_text")).click();
+			driver.findElement(By.id("courseName")).clear();
+			driver.findElement(By.id("courseName")).sendKeys(coursename);
+			driver.findElement(By.id("coursePrice")).clear();
+			driver.findElement(By.id("coursePrice")).sendKeys("12");
+			driver.findElement(By.id("J_tinyContainer")).clear();
+			driver.findElement(By.id("J_tinyContainer")).sendKeys("语文课——测试课程");
+			driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+		}
+		public void deleteCoursecom(){
+			// 删除测试课程
+			       driver.findElement(By.linkText("课程管理")).click();
+					driver.findElement(By.cssSelector("a.current")).click();
+					driver.findElement(By.linkText("删除")).click();
+					driver.findElement(By.cssSelector("button[type=\"button\"]")).click();
+					sleep();
+			
+		}
+	
+	//创建教室
+	
+	
+	//创建推荐人公共方法
+		public void  createRefcom(){
+			sleep();sleep();
+			driver.findElement(By.linkText("招生管理")).click();
+			driver.findElement(By.cssSelector("span.greenbtn25_text")).click();
+			driver.findElement(By.id("name")).clear();
+			driver.findElement(By.id("name")).sendKeys("萝莉001");
+			driver.findElement(By.id("mobile")).clear();
+			driver.findElement(By.id("mobile")).sendKeys("18610221512");
+			sleep();
+			driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+			driver.findElement(By.linkText("招生管理")).click();
+			sleep();
+
+		}
+		//公共方法
+		public void deleteRefcom(){
+			sleep();
+			driver.findElement(By.linkText("招生管理")).click();
+			sleep();
+			driver.findElement(By.linkText("删除")).click();
+			driver.findElement(
+					By.xpath("html/body/div[9]/table/tbody/tr[2]/td[2]/div[3]/button[1]"))
+					.click();
+			sleep();
+		}
+	
+	//
 	
 	public void sleep() {
 		try {

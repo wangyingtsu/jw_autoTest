@@ -1,11 +1,29 @@
 package testcase;
 
-public class OrdersManageTest {
+import org.junit.Test;
+
+public class OrdersManageTest extends Base{
+	//数据准备
+	public  void dataPre(){
+		this.createStucom();//调用基类中的创建学员的方法
+		this.createCoursecom();//调用基类中的创建课程的方法
+		this.createRefcom();//调用基类中的创建推荐人的方法
+	}
+	//数据清除
+	public  void dataClear(){
+		this.deleteStucom();
+		this.deleteCoursecom();
+		this.deleteRefcom();
+	}
 	
 	/**
 	 *正常创建订单 
 	 */
+	@Test
 	public void createOrderformal(){
+		this.dataPre();
+		
+		this.dataClear();
 		
 	}
 	
