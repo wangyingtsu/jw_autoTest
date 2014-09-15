@@ -1,17 +1,17 @@
 package testcase;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -28,12 +28,12 @@ public class Base {
 
 	@Before
 	public void setUp() throws Exception {
-		String browser ="firefox";
+		String browser ="chrome";
+	//	String browser ="firefox";
 		// start driver
 		//若浏览器没有安装在C盘，用此句System.setProperty("webdriver.firefox.bin","D:/MozillaFirefox/firefox.exe");
 		System.out.println("browser will be open");
 		if(browser=="firefox"){
-			
 		 driver = new FirefoxDriver();
 		 driver.manage().window().maximize();
 		 baseUrl = "http://jw.ablesky.com/";
@@ -43,9 +43,10 @@ public class Base {
 		System.out.println("browser is open");
 		
 		}
-		else if(browser=="ie"){
-			
-			 driver = new InternetExplorerDriver();;
+		else if(browser=="chrome"){
+			System.out.println("this is chrom^^");
+			 driver = new ChromeDriver();
+			 System.setProperty("webdriver.chrome.driver", "d:/chromedriver");
 			 driver.manage().window().maximize();
 			 baseUrl = "http://jw.ablesky.com/";
 			//将窗口最大化
@@ -53,10 +54,13 @@ public class Base {
 			/**
 			 * 当采用 InterenetExplorerDriver时，可能会遇到一个安全问题提示："Protected Mode must be set to the same value (enabled or disabled) for all zones"。想要解决这一问题，需要设置特定的功能
 			 */
-			DesiredCapabilities capability=DesiredCapabilities.internetExplorer(); 
-			 capability.setCapability( 
-			              InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); 
-			 WebDriver webdriver = new InternetExplorerDriver(capability);
+//			DesiredCapabilities capability=DesiredCapabilities.internetExplorer(); 
+//			 capability.setCapability( 
+//			              InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); 
+//			 WebDriver webdriver = new InternetExplorerDriver(capability);
+		}
+		else if(browser=="IE"){
+			
 		}
 
 		
@@ -97,11 +101,14 @@ public class Base {
 			driver.findElement(By.xpath("(//input[@name='gender'])[2]")).click();
 			driver.findElement(By.name("mobile")).clear();
 			driver.findElement(By.name("mobile")).sendKeys("13522224444");
-			driver.findElement(By.name("recommenderIdbefore")).click();
-			driver.findElement(By.id("ymgg")).click();
-			driver.findElement(By.cssSelector("button[type=\"button\"]")).click();
+//			driver.findElement(By.name("recommenderIdbefore")).click();
+//			driver.findElement(By.id("ymgg")).click();
+//			driver.findElement(By.cssSelector("button[type=\"button\"]")).click();
 			driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
-			
+			System.out.println("tttttt");
+			driver.findElement(By.cssSelector("a.current")).click();
+			//driver.findElement(By.linkText("学员管理")).click();
+			System.out.println("mmmm");
 		}
 		//删除学员公共方法
 		public void deleteStucom(){
@@ -112,6 +119,7 @@ public class Base {
 			//driver.findElement(By.xpath("(//a[contains(text(),'删除')])[1]")).click();//删除学员（数字显示第几个，列表中就删除第几个学员）
 		    driver.findElement(By.cssSelector("button[type=\"button\"]")).click();	    
 		    sleep();
+		    driver.findElement(By.linkText("学员管理")).click();
 			
 		}
 	
@@ -125,6 +133,7 @@ public class Base {
 		public void createCoursecom(){
 			String coursename = "测试课程-绿萝";
 			driver.findElement(By.linkText("课程管理")).click();
+			sleep();
 			driver.findElement(By.cssSelector("span.greenbtn25_text")).click();
 			driver.findElement(By.id("courseName")).clear();
 			driver.findElement(By.id("courseName")).sendKeys(coursename);
@@ -133,6 +142,9 @@ public class Base {
 			driver.findElement(By.id("J_tinyContainer")).clear();
 			driver.findElement(By.id("J_tinyContainer")).sendKeys("语文课——测试课程");
 			driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+			driver.findElement(By.cssSelector("a.current")).click();
+//			driver.findElement(By.linkText("课程管理")).click();
+//			driver.findElement(By.linkText("课程管理")).click();
 		}
 		public void deleteCoursecom(){
 			// 删除测试课程
@@ -151,6 +163,7 @@ public class Base {
 		public void  createRefcom(){
 			sleep();sleep();
 			driver.findElement(By.linkText("招生管理")).click();
+			sleep();sleep();
 			driver.findElement(By.cssSelector("span.greenbtn25_text")).click();
 			driver.findElement(By.id("name")).clear();
 			driver.findElement(By.id("name")).sendKeys("萝莉001");
@@ -159,7 +172,8 @@ public class Base {
 			sleep();
 			driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
 			driver.findElement(By.linkText("招生管理")).click();
-			sleep();
+			sleep();sleep();sleep();
+			driver.findElement(By.cssSelector("a.current")).click();
 
 		}
 		//公共方法
@@ -174,7 +188,81 @@ public class Base {
 			sleep();
 		}
 	
-	//
+		//创建订单公共方法
+		public void creatOrderCom(){
+			String expectedCurrenturl = "http://jw."+ env
+					+"ablesky.com/courseOrderRedirect.do?action=toCourseOrderList";
+			String name="ymgg11";
+			sleep();
+			driver.findElement(By.linkText("订单管理")).click();
+			String actualCurrentur1 = driver.getCurrentUrl();
+			String title = driver.getTitle() + "订单管理";
+			System.out.println(title + "\n" + actualCurrentur1);                                                                                                                                                                                                                                                                              
+			assertEquals(expectedCurrenturl,actualCurrentur1);
+			sleep();
+			driver.findElement(By.className("greenbtn25_text")).click();//点击创建订单按钮
+			sleep();
+			driver.findElement(By.id("order_stuName")).clear();
+			driver.findElement(By.id("order_stuName")).click();//选择学员
+			//在弹出框中选择学员
+			List<WebElement> ele=driver.findElements(By.className("clc-item-name"));
+			for(WebElement e:ele){
+				String stuName=e.getText();
+				System.out.println(stuName+"####");
+				if (stuName.equals(name)){
+					e.click();
+				}
+				break;
+			}
+			//点击弹框中的确认按钮
+		driver.findElement(By.xpath(".//*[@id='choice_clc']/table/tbody/tr[2]/td[2]/div[3]/button[1]")).click();
+		//选择课程
+		sleep();sleep();
+		String coursename = "测试课程-绿萝";
+		driver.findElement(By.id("order_course")).click();
+		List<WebElement> cou=driver.findElements(By.className("clc-item-name"));
+		for(WebElement c:cou){
+			String stuName=c.getText();
+			System.out.println(stuName+"$$$$");
+			if (stuName.equals(coursename)){
+				c.click();
+			}
+			break;
+		}
+		sleep();sleep();
+		//点击确认按钮
+		driver.findElement(By.xpath(".//*[@id='choice_clc']/table/tbody/tr[2]/td[2]/div[3]/button[1]")).click();
+		sleep();
+		//输入折扣价
+		driver.findElement(By.id("order_coursePrice")).clear();
+		driver.findElement(By.id("order_coursePrice")).sendKeys("10");
+		//课程推荐人
+		String refename = "萝莉001";
+		driver.findElement(By.id("order_recomm")).click();
+		sleep();
+		List<WebElement> rec=driver.findElements(By.className("clc-item-name"));
+		for(WebElement re:rec){
+			String ReName=re.getText();
+			System.out.println(ReName+"$$$$");
+			if (ReName.equals(refename)){
+				re.click();
+			}
+			break;
+		}
+		driver.findElement(By.xpath(".//*[@id='choice_clc']/table/tbody/tr[2]/td[2]/div[3]/button[1]")).click();
+		//点击提交表单的确认按钮
+		sleep();
+		List<WebElement>  comfs=driver.findElements(By.className("bluebtn30_text"));
+		for(WebElement comf:comfs ){
+			String  con=comf.getText();
+			if(con.equals("确定")){
+				comf.click();
+			}
+			break;
+					
+		}
+		}
+		
 	
 	public void sleep() {
 		try {
