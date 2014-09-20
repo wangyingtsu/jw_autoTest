@@ -71,6 +71,7 @@ public class ClassroomManageTest extends Base {
 		driver.findElement(By.name("location")).clear();
 		driver.findElement(By.name("location")).sendKeys("最大的操场");
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+		sleep();
 		driver.findElement(By.linkText("教室管理")).click();
 		driver.findElement(By.name("userName")).clear();
 		driver.findElement(By.name("userName")).sendKeys("第一篮球场");
@@ -107,7 +108,9 @@ public class ClassroomManageTest extends Base {
 		driver.findElement(By.name("location")).clear();
 		driver.findElement(By.name("location")).sendKeys("最大的操场");
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+		sleep();
 		driver.findElement(By.linkText("教室管理")).click();
+		sleep();
 		driver.findElement(By.linkText("修改")).click();
 		driver.findElement(By.id("classRoomname")).clear();
 		driver.findElement(By.id("classRoomname")).sendKeys("第一篮球场333");
@@ -153,11 +156,11 @@ public class ClassroomManageTest extends Base {
 				.findElement(
 						By.xpath(".//*[@id='J_createCircleBasic']/tbody/tr[1]/td[2]/div/label"))
 				.getText();
-		// 截图并保存在D盘下
-		File screenShotFile = ((TakesScreenshot) driver)
-				.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/Classroommanage/classroomNameError.png"));
+//		// 截图并保存在D盘下
+//		File screenShotFile = ((TakesScreenshot) driver)
+//				.getScreenshotAs(OutputType.FILE);
+//		FileUtils.copyFile(screenShotFile, new File(
+//				"D:/auto_test/Classroommanage/classroomNameError.png"));
 		Assert.assertEquals(expectederrorMessage, actualerrorMessage);
 		driver.findElement(By.id("classRoomname")).clear();
 		driver.findElement(By.id("classRoomname")).sendKeys("第一篮球场55555");

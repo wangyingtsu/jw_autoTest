@@ -241,10 +241,10 @@ public class EmailTest extends Base {
 		sleep();
 		sleep();
 		// 截图并保存在D盘下
-		File screenShotFile = ((TakesScreenshot) driver)
-				.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/EmailTest/revicerisNull.png"));
+//		File screenShotFile = ((TakesScreenshot) driver)
+//				.getScreenshotAs(OutputType.FILE);
+//		FileUtils.copyFile(screenShotFile, new File(
+//				"D:/auto_test/EmailTest/revicerisNull.png"));
 		// 对弹出框的处理
 		Alert alert = driver.switchTo().alert();
 		String text = alert.getText();

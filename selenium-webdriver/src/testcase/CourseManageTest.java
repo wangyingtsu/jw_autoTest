@@ -36,15 +36,16 @@ public class CourseManageTest extends Base {
 		driver.findElement(By.id("J_tinyContainer")).clear();
 		driver.findElement(By.id("J_tinyContainer")).sendKeys("语文课——测试课程");
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+		sleep();sleep();
 		driver.findElement(By.linkText("课程管理")).click();
-
+		sleep();sleep();
 		driver.findElement(By.cssSelector("a.current")).click();
 		driver.findElement(By.linkText("修改")).click();
 		// 截图并保存在D盘下
-		File screenShotFile = ((TakesScreenshot) driver)
-				.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/CourseManage/createCourse.png"));
+//		File screenShotFile = ((TakesScreenshot) driver)
+//				.getScreenshotAs(OutputType.FILE);
+//		FileUtils.copyFile(screenShotFile, new File(
+//				"D:/auto_test/CourseManage/createCourse.png"));
 		String realCourse = driver.findElement(By.id("courseName"))
 				.getAttribute("value");
 		sleep();
@@ -52,7 +53,7 @@ public class CourseManageTest extends Base {
 
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();// 保存
 
-		driver.findElement(By.cssSelector("a.current")).click();
+		driver.findElement(By.linkText("课程管理")).click();
 		driver.findElement(By.linkText("删除")).click();
 		driver.findElement(By.cssSelector("button[type=\"button\"]")).click();
 		sleep();
@@ -65,7 +66,7 @@ public class CourseManageTest extends Base {
 	 */
 	@Test
 	public void createCourseForTitletoolong() throws IOException {
-		String errorCourseName = "噶尽快发货卡机啥的和反馈阿道夫凯撒的恢复快接电话发快件萨丹哈反馈电话费会计师的恢复会计"
+		String errorCourseName = "噶尽快发货卡机啥的和反馈阿道夫凯撒的反馈阿道夫凯撒的恢反馈阿道夫凯撒的恢反馈阿道夫凯撒的恢恢复快接电话发快件萨丹哈反馈电话费会计师的恢复会计"
 				+ "师电话费课件是电话费可接受的回复空间萨丹哈反馈奥斯卡回复会计啥的和反馈盛大和罚款坚实的发货快的看法和卡仕达福克斯的恢复快的生活费";
 		String formalName = "数学课——测试";
 		String expectedErrorMessage = "最多100位字符";
@@ -74,13 +75,14 @@ public class CourseManageTest extends Base {
 		driver.findElement(By.cssSelector("span.greenbtn25_text")).click();
 		driver.findElement(By.id("courseName")).clear();
 		driver.findElement(By.id("courseName")).sendKeys(errorCourseName);
+		sleep();		sleep();
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
 
 		// 截图并保存在D盘下
-		File screenShotFile = ((TakesScreenshot) driver)
-				.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/CourseManage/createCourseForTitletoolong.png"));
+//		File screenShotFile = ((TakesScreenshot) driver)
+//				.getScreenshotAs(OutputType.FILE);
+//		FileUtils.copyFile(screenShotFile, new File(
+//				"D:/auto_test/CourseManage/createCourseForTitletoolong.png"));
 		String errorMessage = driver
 				.findElement(
 						By.xpath(".//*[@id='#J_createCourse']/tbody/tr[1]/td[2]/div/label[2]"))
@@ -93,7 +95,7 @@ public class CourseManageTest extends Base {
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();// 确定按钮
 
 		// 删除测试课程
-		driver.findElement(By.cssSelector("a.current")).click();
+		driver.findElement(By.linkText("课程管理")).click();
 		driver.findElement(By.linkText("删除")).click();
 		driver.findElement(By.cssSelector("button[type=\"button\"]")).click();
 		sleep();
@@ -120,15 +122,18 @@ public class CourseManageTest extends Base {
 		driver.findElement(By.id("coursePrice")).sendKeys(coursePrice);
 		driver.findElement(By.id("J_tinyContainer")).clear();
 		driver.findElement(By.id("J_tinyContainer")).sendKeys(errorCourseDescription);
-		
+		sleep();sleep();sleep();
+        System.out.println("aaaaaaaaaaaaaaaaa");
+		//点击确定按钮
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
 		
-
-		// 截图并保存在D盘下
-		File screenShotFile = ((TakesScreenshot) driver)
-				.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/CourseManage/createcourseFordescriptionOvertoolong.png"));
+        System.out.println("bbbbbbbbbbbbbb");
+//		// 截图并保存在D盘下
+//		File screenShotFile = ((TakesScreenshot) driver)
+//				.getScreenshotAs(OutputType.FILE);
+//		FileUtils.copyFile(screenShotFile, new File(
+//				"D:/auto_test/CourseManage/createcourseFordescriptionOvertoolong.png"));
+		sleep();sleep();
 		String actulerrorMessage = driver
 				.findElement(
 						By.xpath(".//*[@id='#J_createCourse']/tbody/tr[3]/td[2]/label"))
@@ -141,7 +146,7 @@ public class CourseManageTest extends Base {
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();// 确定按钮
 
 		// 删除测试课程
-		driver.findElement(By.cssSelector("a.current")).click();
+		driver.findElement(By.linkText("课程管理")).click();
 		driver.findElement(By.linkText("删除")).click();
 		driver.findElement(By.cssSelector("button[type=\"button\"]")).click();
 		sleep();
@@ -169,10 +174,10 @@ public class CourseManageTest extends Base {
 		
 
 		// 截图并保存在D盘下
-		File screenShotFile = ((TakesScreenshot) driver)
-				.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(screenShotFile, new File(
-				"D:/auto_test/CourseManage/createcourseForPricetoohigh.png"));
+//		File screenShotFile = ((TakesScreenshot) driver)
+//				.getScreenshotAs(OutputType.FILE);
+//		FileUtils.copyFile(screenShotFile, new File(
+//				"D:/auto_test/CourseManage/createcourseForPricetoohigh.png"));
 		String actulerrorMessage = driver
 				.findElement(
 						By.xpath("html/body/div[4]/div[2]/section/div/div"))
@@ -183,9 +188,9 @@ public class CourseManageTest extends Base {
 		driver.findElement(By.id("coursePrice")).clear();
 		driver.findElement(By.id("coursePrice")).sendKeys(formalcoursePrice);
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();// 确定按钮
-
+		sleep();sleep();
 		// 删除测试课程
-		driver.findElement(By.cssSelector("a.current")).click();
+		driver.findElement(By.linkText("课程管理")).click();
 		driver.findElement(By.linkText("删除")).click();
 		driver.findElement(By.cssSelector("button[type=\"button\"]")).click();
 		sleep();

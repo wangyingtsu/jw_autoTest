@@ -13,7 +13,7 @@ public class RectutStudentsManageTest extends Base {
 	/**
 	 * 创建推荐人
 	 */
-	// @Test
+	@Test
 	public void creatReferrer() {
 		String expectedCurrenturl = "http://jw." + env
 				+ "ablesky.com/recommenderRedirect.do?action=toManage";
@@ -31,6 +31,7 @@ public class RectutStudentsManageTest extends Base {
 		driver.findElement(By.id("mobile")).sendKeys("18610221512");
 		sleep();
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 		sleep();
 		this.deleteRefcom();
@@ -41,7 +42,7 @@ public class RectutStudentsManageTest extends Base {
 	/**
 	 * 不能创建同名的推荐人
 	 */
-	// @Test
+	@Test
 	public void createReferrerwithsamename() {
 		String expectedCurrenturl = "http://jw." + env
 				+ "ablesky.com/recommenderRedirect.do?action=toManage";
@@ -75,6 +76,7 @@ public class RectutStudentsManageTest extends Base {
 				.getText();
 		Assert.assertEquals(expectederrorMess, actualerrorMess);
 		driver.findElement(By.cssSelector("span.graybtn30_text")).click();
+		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 		// 删除
 		sleep();
@@ -87,7 +89,7 @@ public class RectutStudentsManageTest extends Base {
 	/**
 	 * 姓名不能超过100字
 	 */
-	// @Test
+	@Test
 	public void nameover100() {
 		String expectedCurrenturl = "http://jw." + env
 				+ "ablesky.com/recommenderRedirect.do?action=toManage";
@@ -117,7 +119,7 @@ public class RectutStudentsManageTest extends Base {
 		driver.findElement(By.id("name")).clear();
 		driver.findElement(By.id("name")).sendKeys(rightname);
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
-
+		sleep();sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 		sleep();
 		this.deleteRefcom();
@@ -128,7 +130,7 @@ public class RectutStudentsManageTest extends Base {
 	/**
 	 * 性别选择女
 	 */
-	// @Test
+	@Test
 	public void gentelIsfemal() {
 		String expectedCurrenturl = "http://jw." + env
 				+ "ablesky.com/recommenderRedirect.do?action=toManage";
@@ -149,6 +151,7 @@ public class RectutStudentsManageTest extends Base {
 		driver.findElement(By.id("mobile")).sendKeys("18610221512");
 		sleep();
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 		sleep();
 		this.deleteRefcom();
@@ -160,7 +163,7 @@ public class RectutStudentsManageTest extends Base {
 	/**
 	 * 手机号输入规则验证
 	 */
-	// @Test
+	@Test
 	public void mobileNumber() {
 		String expectedCurrenturl = "http://jw." + env
 				+ "ablesky.com/recommenderRedirect.do?action=toManage";
@@ -239,7 +242,7 @@ public class RectutStudentsManageTest extends Base {
 	/**
 	 * 修改推荐人
 	 */
-	// @Test
+	@Test
 	public void modifyReferrer() {
 		String expectedCurrenturl = "http://jw." + env
 				+ "ablesky.com/recommenderRedirect.do?action=toManage";
@@ -256,6 +259,7 @@ public class RectutStudentsManageTest extends Base {
 		driver.findElement(By.id("mobile")).sendKeys("18610221512");
 		sleep();
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 		sleep();
 		sleep();
@@ -298,7 +302,7 @@ public class RectutStudentsManageTest extends Base {
 	/**
 	 * 按姓名搜索推荐人
 	 */
-	// @Test
+	@Test
 	public void queryByNmae() {
 		String expectedCurrenturl = "http://jw." + env
 				+ "ablesky.com/recommenderRedirect.do?action=toManage";
@@ -315,6 +319,7 @@ public class RectutStudentsManageTest extends Base {
 		driver.findElement(By.id("mobile")).sendKeys("18666668888");
 		sleep();
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 
 		driver.findElement(By.id("data_type")).click();
@@ -359,6 +364,7 @@ public class RectutStudentsManageTest extends Base {
 		driver.findElement(By.id("mobile")).sendKeys("18666665555");
 		sleep();
 		driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
+		sleep();
 		driver.findElement(By.linkText("招生管理")).click();
 		// 选择下拉列表方法
 		Select select = new Select(driver.findElement(By.id("data_type")));

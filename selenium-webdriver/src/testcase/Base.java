@@ -28,8 +28,8 @@ public class Base {
 
 	@Before
 	public void setUp() throws Exception {
-		String browser ="chrome";
-	//	String browser ="firefox";
+		//	String browser ="chrome";
+		String browser ="firefox";
 		// start driver
 		//若浏览器没有安装在C盘，用此句System.setProperty("webdriver.firefox.bin","D:/MozillaFirefox/firefox.exe");
 		System.out.println("browser will be open");
