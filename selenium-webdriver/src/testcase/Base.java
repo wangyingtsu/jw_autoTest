@@ -25,45 +25,49 @@ public class Base {
 	//public String env="beta";
 	public String username="auto_test";
 	public String password="auto_test";
-
+	public String browser ="IE";
 	@Before
 	public void setUp() throws Exception {
-		//	String browser ="chrome";
-		String browser ="firefox";
-		// start driver
-		//若浏览器没有安装在C盘，用此句System.setProperty("webdriver.firefox.bin","D:/MozillaFirefox/firefox.exe");
-		System.out.println("browser will be open");
+	
+		// start driver   
 		if(browser=="firefox"){
+		//火狐浏览器最高版本支持到29.0
+		System.out.println("firefox browser will be open");
+		System.setProperty("webdriver.firefox.bin","C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
 		 driver = new FirefoxDriver();
 		 driver.manage().window().maximize();
 		 baseUrl = "http://jw.ablesky.com/";
 		//将窗口最大化
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
-		System.out.println("browser is open");
+		System.out.println("firefox browser is open");
 		
 		}
 		else if(browser=="chrome"){
-			System.out.println("this is chrom^^");
+			System.out.println("chrome  browser is open");
+			System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
+			// System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver.exe");
 			 driver = new ChromeDriver();
-			 System.setProperty("webdriver.chrome.driver", "d:/chromedriver");
 			 driver.manage().window().maximize();
 			 baseUrl = "http://jw.ablesky.com/";
 			//将窗口最大化
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			/**
-			 * 当采用 InterenetExplorerDriver时，可能会遇到一个安全问题提示："Protected Mode must be set to the same value (enabled or disabled) for all zones"。想要解决这一问题，需要设置特定的功能
-			 */
-//			DesiredCapabilities capability=DesiredCapabilities.internetExplorer(); 
-//			 capability.setCapability( 
-//			              InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true); 
-//			 WebDriver webdriver = new InternetExplorerDriver(capability);
+		
 		}
 		else if(browser=="IE"){
-			
-		}
+			System.out.println("IE  browser is open");
+		 
+				/**
+				 * 当采用 InterenetExplorerDriver时，可能会遇到一个安全问题提示："Protected Mode must be set to the same value (enabled or disabled) for all zones"。想要解决这一问题，需要设置特定的功能
+				 */
+			DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
+		     ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		     System.setProperty("webdriver.ie.driver", "drivers\\IEDriverServer.exe");
+		     driver = new InternetExplorerDriver(ieCapabilities);
+			 driver.manage().window().maximize();
+			 baseUrl = "http://jw.ablesky.com/";
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-		
+		}
 		// login
 		driver.get(baseUrl + "/");
 		driver.findElement(By.name("username")).clear();
@@ -101,9 +105,7 @@ public class Base {
 			driver.findElement(By.xpath("(//input[@name='gender'])[2]")).click();
 			driver.findElement(By.name("mobile")).clear();
 			driver.findElement(By.name("mobile")).sendKeys("13522224444");
-//			driver.findElement(By.name("recommenderIdbefore")).click();
-//			driver.findElement(By.id("ymgg")).click();
-//			driver.findElement(By.cssSelector("button[type=\"button\"]")).click();
+
 			driver.findElement(By.cssSelector("span.bluebtn30_text")).click();
 			System.out.println("tttttt");
 			driver.findElement(By.cssSelector("a.current")).click();
